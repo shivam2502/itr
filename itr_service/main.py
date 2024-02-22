@@ -13,7 +13,8 @@ def creat_app() -> FastAPI:
     )
     return app
 
+app = creat_app()
+
+
 if __name__ == "__main__":
-    print(os.getenv("TITLE"))
-    app = creat_app()
-    uvicorn.run(app, host=os.getenv("HOST"), port=os.getenv("PORT"))
+    uvicorn.run(app, host=os.getenv("HOST"), port=int(os.getenv("PORT")))
