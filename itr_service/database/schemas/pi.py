@@ -38,3 +38,10 @@ class AddressSchema(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class FilingStatusBase(BaseModel):
+    ReturnFileSec: int
+    SeventhProvisio139: str
+    NewTaxRegime: str
+    clauseiv7provisio139i: str
