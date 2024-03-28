@@ -1,4 +1,4 @@
-from common_imports import *
+from database.common_imports import *
 
 class ITR1TaxComputation(Base):
     __tablename__ = 'itr1_tax_computation'
