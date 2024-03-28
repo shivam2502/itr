@@ -1,4 +1,4 @@
-from database.common_imports import *
+from common_imports import *
 
 class Verification(Base):
     __tablename__ = 'verification'

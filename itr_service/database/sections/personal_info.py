@@ -1,4 +1,8 @@
-from database.common_imports import *
+from sqlalchemy import Column, Integer, String, Enum, ForeignKey
+from sqlalchemy.orm import relationship
+from db_config import Base
+
+
 
 class PersonalInfo(Base):
     __tablename__ = 'personal_info'
@@ -8,7 +12,7 @@ class PersonalInfo(Base):
     pan = Column(String(10), unique=True)
     address_id = Column(Integer, ForeignKey('address.id'))
     dob = Column(String)
-    employer_category = Column(Enum('OTH', 'GOV', 'PSU'))
+    employer_category = Column(String)
     aadhaar_card_no = Column(String)
 
     assessee_name = relationship("AssesseeName")
@@ -36,6 +40,6 @@ class Address(Base):
     pin_code = Column(Integer)
     country_code_mobile = Column(Integer)
     mobile_no = Column(Integer)
-    email_address = Column(EmailType)
+    email_address = Column(String)
 
 
