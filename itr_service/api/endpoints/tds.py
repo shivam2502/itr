@@ -4,7 +4,7 @@ from database.db_config import get_db
 
 
 # Import the necessary models and schemas
-from database.sections.tds_otherthan_sal import TDSonOthThanSals as tds_db
+from database.  sections.tds_otherthan_sal import TDSonOthThanSals as tds_db
 from database.sections.tds_salary import TDSonSalaries as tds_sal_db
 from database.schemas.tds import (
     EmployerOrDeductorOrCollectDetlCreate,
