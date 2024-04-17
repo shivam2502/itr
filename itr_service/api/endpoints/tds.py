@@ -1,12 +1,12 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from database.db_config import get_db
+from app.itr_service.database.db_config import get_db
 
 
 # Import the necessary models and schemas
-from database.sections.tds_otherthan_sal import TDSonOthThanSals as tds_db
-from database.sections.tds_salary import TDSonSalaries as tds_sal_db
-from database.schemas.tds import (
+from app.itr_service.database.sections.tds_otherthan_sal import TDSonOthThanSals as tds_db
+from app.itr_service.database.sections.tds_salary import TDSonSalaries as tds_sal_db
+from app.itr_service.database.schemas.tds import (
     EmployerOrDeductorOrCollectDetlCreate,
     EmployerOrDeductorOrCollectDetlUpdate,
     TDSonOthThanSalsCreate,
@@ -18,7 +18,7 @@ from database.schemas.tds import (
 )
 
 # Import the get_db function to get the database session
-from database import get_db
+from app.itr_service.database.db_config import get_db
 
 # Create the API router
 tds_router = APIRouter()

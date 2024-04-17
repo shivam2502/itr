@@ -1,17 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
 
-class PersonalInfoSchema(BaseModel):
-    id: int
-    pan: str
-    dob: str
-    employer_category: str
-    aadhaar_card_no: str
-    assessee_name: Optional["AssesseeNameSchema"]
-    address: Optional["AddressSchema"]
-
-    class Config:
-        orm_mode = True
 
 class AssesseeNameSchema(BaseModel):
     id: int
@@ -38,6 +27,20 @@ class AddressSchema(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class PersonalInfoSchema(BaseModel):
+    id: int
+    pan: str
+    dob: str
+    employer_category: str
+    aadhaar_card_no: str
+    assessee_name: Optional[AssesseeNameSchema]
+    address: Optional[AddressSchema]
+
+    class Config:
+        orm_mode = True
+
 
 
 class FilingStatusBase(BaseModel):

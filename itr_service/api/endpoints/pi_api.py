@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
-from database.sections import personal_info as pidb, filing_status as fsdb
-from database.schemas import pi
-from database.db_config import get_db
+from app.itr_service.database.sections import personal_info as pidb, filing_status as fsdb
+from app.itr_service.database.schemas import pi
+from app.itr_service.database.db_config import get_db
 from typing import List
 
 pi_router = APIRouter(prefix="/personal_info", tags=["PersonalInfo"])
@@ -71,7 +71,7 @@ def read_all_filing_status(db: Session = Depends(get_db)):
     return db.query(fsdb.FilingStatus).all()
 
 @pi_router.put("/{filing_status_id}", response_model=pi.FilingStatusBase)
-def update_filing_status(filing_status_id: int, filing_status: pi.FilingStatusUpdate, db: Session = Depends(get_db)):
+def update_filing_status(filing_status_id: int, filing_status: pi.FilingStatusBase, db: Session = Depends(get_db)):
     db_filing_status = db.query(fsdb.FilingStatus).filter(fsdb.FilingStatus.id == filing_status_id).first()
     if db_filing_status is None:
         raise HTTPException(status_code=404, detail="Filing status not found")

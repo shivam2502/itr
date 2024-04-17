@@ -1,0 +1,24 @@
+version: '0.1'
+services:
+  pg:
+    image: postgres
+    command: ["bash", "-c", "apt update && apt install -y postgresql-client"]
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: itr
+      POSTGRES_PASSWORD: itr123
+      POSTGRES_DB: itr
+    volumes:
+      - ./db_service/pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+  
+  itr_service:
+    build:
+      context: .
+      dockerfile: ./itr_service/fapidocker
+    volumes:
+      - ./itr_service:/app/itr_service
+    ports:
+      - "8000:8000"
+

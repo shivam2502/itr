@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from database.db_config import get_db
+from app.itr_service.database.db_config import get_db
 
 # Import the necessary models and schemas
-from database.sections.verification import Verification as vdb, Declaration as ddb
-from database.schemas.ver_refund import (
+from app.itr_service.database.sections.verification import Verification as vdb, Declaration as ddb
+from app.itr_service.database.schemas.ver_refund import (
     DeclarationCreate,
     DeclarationUpdate,
     RefundCreate,
@@ -20,7 +20,7 @@ from database.schemas.ver_refund import (
 )
 
 # Import the get_db function to get the database session
-from database import get_db
+from app.itr_service.database.db_config import get_db
 
 # Create the API router
 verdec_router = APIRouter()

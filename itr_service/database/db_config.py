@@ -3,9 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-# Replace 'your_database_url' with the actual connection string to your database
-# Example connection string for SQLite: 'sqlite:///example.db'
-engine = create_engine('your_database_url')
+engine = create_engine('postgresql://itr:itr123@itr-pg-1/itr')
 
 Base = declarative_base()
 

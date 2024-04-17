@@ -2,15 +2,15 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 # Importing models and schemas
-from database.sections.income_deduction import ITR1IncomeDeductions
-from database.schemas.incded import (
+from app.itr_service.database.sections.income_deduction import ITR1IncomeDeductions
+from app.itr_service.database.schemas.incded import (
     ITR1IncomeDeductionsCreate,
     ITR1IncomeDeductionsUpdate,
-    ITR1IncomeDeductionsResponse,
+    ITR1IncomeDeductions,
 )
 
 # Importing database dependency
-from database.db_config import get_db
+from app.itr_service.database.db_config import get_db
 
 # Define router
 id_router = APIRouter()
@@ -25,13 +25,13 @@ def read_income_deductions(income_deductions_id: int, db: Session = Depends(get_
 
 
 # API endpoint to read income and deductions by ID
-@id_router.get("/income_deductions/{income_deductions_id}", response_model=ITR1IncomeDeductionsResponse)
+@id_router.get("/income_deductions/{income_deductions_id}", response_model=ITR1IncomeDeductions)
 def get_income_deductions(income_deductions_id: int, db: Session = Depends(get_db)):
     return read_income_deductions(income_deductions_id, db)
 
 
 # API endpoint to create income and deductions
-@id_router.post("/income_deductions/", response_model=ITR1IncomeDeductionsResponse)
+@id_router.post("/income_deductions/", response_model=ITR1IncomeDeductions)
 def create_income_deductions(income_deductions: ITR1IncomeDeductionsCreate, db: Session = Depends(get_db)):
     db_income_deductions = ITR1IncomeDeductions(**income_deductions.dict())
     db.add(db_income_deductions)
@@ -41,7 +41,7 @@ def create_income_deductions(income_deductions: ITR1IncomeDeductionsCreate, db: 
 
 
 # API endpoint to update income and deductions by ID
-@id_router.put("/income_deductions/{income_deductions_id}", response_model=ITR1IncomeDeductionsResponse)
+@id_router.put("/income_deductions/{income_deductions_id}", response_model=ITR1IncomeDeductions)
 def update_income_deductions(income_deductions_id: int, income_deductions: ITR1IncomeDeductionsUpdate, db: Session = Depends(get_db)):
     db_income_deductions = read_income_deductions(income_deductions_id, db)
     for key, value in income_deductions.dict().items():
