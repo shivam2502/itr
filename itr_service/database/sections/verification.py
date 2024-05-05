@@ -1,4 +1,12 @@
-from app.itr_service.database.common_imports import *
+from database.common_imports import *
+
+
+
+
+class CapacityEnum(str, Enum):
+    S = "S"
+    O = "O"
+
 
 class Verification(Base):
     __tablename__ = 'verification'
@@ -7,7 +15,7 @@ class Verification(Base):
     Declaration_AssesseeVerName = Column(String)
     Declaration_FatherName = Column(String)
     Declaration_AssesseeVerPAN = Column(String)
-    Capacity = Column(Enum("S", "O", name="capacity_enum"))
+    Capacity = Column(CapacityEnum)
     Place = Column(String)
 
 
@@ -22,7 +30,3 @@ class Declaration(Base):
     # Relationship with parent table
     verification_id = Column(Integer, ForeignKey('verification.id'))
 
-
-class CapacityEnum(str, Enum):
-    S = "S"
-    O = "O"

@@ -1,4 +1,4 @@
-from app.itr_service.database.common_imports import *
+from database.common_imports import *
 
 class EmployerOrDeductorOrCollectDetl(Base):
     __tablename__ = 'employer_or_deductor_or_collect_detl'

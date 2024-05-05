@@ -1,4 +1,4 @@
-from app.itr_service.database.common_imports import *
+from database.common_imports import *
 
 # EmployerOrDeductorOrCollectDetl class is imported from the previous code
 

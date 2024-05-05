@@ -2,15 +2,15 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 # Importing models and schemas
-from app.itr_service.database.sections.income_deduction import ITR1IncomeDeductions
-from app.itr_service.database.schemas.incded import (
+from database.sections.income_deduction import ITR1IncomeDeductions
+from database.schemas.incded import (
     ITR1IncomeDeductionsCreate,
     ITR1IncomeDeductionsUpdate,
     ITR1IncomeDeductions,
 )
 
 # Importing database dependency
-from app.itr_service.database.db_config import get_db
+from database.db_config import get_db
 
 # Define router
 id_router = APIRouter()

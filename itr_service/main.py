@@ -7,11 +7,11 @@ import sys
 
 sys.path.append("api")
 
-from app.itr_service.api.endpoints.inc_ded import id_router
-from app.itr_service.api.endpoints.pi_api import pi_router
-from app.itr_service.api.endpoints.tax import tax_router
-from app.itr_service.api.endpoints.tds import tds_router
-from app.itr_service.api.endpoints.ver_refund import verdec_router
+from api.endpoints.inc_ded import id_router
+from api.endpoints.pi_api import pi_router
+from api.endpoints.tax import tax_router
+from api.endpoints.tds import tds_router
+from api.endpoints.ver_refund import verdec_router
 
 load_dotenv()
 

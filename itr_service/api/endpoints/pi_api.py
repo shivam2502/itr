@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
-from app.itr_service.database.sections import personal_info as pidb, filing_status as fsdb
-from app.itr_service.database.schemas import pi
-from app.itr_service.database.db_config import get_db
+from database.sections import personal_info as pidb, filing_status as fsdb
+from database.schemas import pi
+from database.db_config import get_db
 from typing import List
 
 pi_router = APIRouter(prefix="/personal_info", tags=["PersonalInfo"])

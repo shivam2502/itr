@@ -6,8 +6,16 @@ from sqlalchemy import pool
 from alembic import context
 import sys
 # sys.path.append('../')
-from db_config import Base
-from models import *
+from database.db_config import Base
+# from app.models import *
+from database.sections.income_deduction import ITR1IncomeDeductions
+from database.sections.personal_info import PersonalInfo
+from database.sections.filing_status import FilingStatus
+from database.sections.tax_computation import ITR1TaxComputation
+from database.sections.taxes_paid import TaxesPaid
+from database.sections.tds_otherthan_sal import TDSonOthThanSals
+from database.sections.tds_salary import TDSonSalaries
+from database.sections.verification import Verification, Declaration
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -22,7 +30,7 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-config.set_main_option('sqlalchemy.url', 'postgresql://itr:itr123@localhost:5432/itr')
+config.set_main_option('sqlalchemy.url', 'postgresql://itr:itr123@itr-pg-1/itr')
 target_metadata = Base.metadata
 # other values from the config, defined by the needs of env.py,
 # can be acquired:

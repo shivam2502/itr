@@ -2,9 +2,9 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 # Import the necessary models and schemas
-from app.itr_service.database.sections.tax_computation import ITR1TaxComputation as tax_db
-from app.itr_service.database.sections.taxes_paid import TaxesPaid
-from app.itr_service.database.schemas.taxc import (
+from database.sections.tax_computation import ITR1TaxComputation as tax_db
+from database.sections.taxes_paid import TaxesPaid
+from database.schemas.taxc import (
     ITR1TaxComputationUpdate,
     ITR1TaxComputationCreate,
     TaxesPaidUpdate,
@@ -17,7 +17,7 @@ from app.itr_service.database.schemas.taxc import (
 )
 
 # Import the get_db function to get the database session
-from app.itr_service.database.db_config import get_db
+from database.db_config import get_db
 
 # Create the API router
 tax_router = APIRouter()

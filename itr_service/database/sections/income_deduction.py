@@ -1,4 +1,4 @@
-from app.itr_service.database.common_imports import *
+from database.common_imports import *
 
 class ITR1IncomeDeductions(Base):
     __tablename__ = 'itr1_income_deductions'
